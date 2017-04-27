@@ -1,0 +1,19 @@
+﻿***********************************************************************
+*************************db40 Person database**************************
+***********************************************************************
+
+Select one of the option: 
+
+1) Add new person
+2) Modyficate person data 
+3) Delete person
+4) Insert person address
+5) Modyficate person address
+6) Delete person address 
+7) Insert person phone 
+8) Modyficate person phone 
+9) Delete person phone 
+10) Show person data 
+11) Show statistics 
+
+Select "0" to exit program.

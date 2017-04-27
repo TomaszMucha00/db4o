@@ -1,0 +1,8 @@
+c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\bin\Debug\db4o.exe.config
+c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\bin\Debug\db4o.exe
+c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\bin\Debug\db4o.pdb
+c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\bin\Debug\Db4objects.Db4o.dll
+c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\bin\Debug\Db4objects.Db4o.xml
+c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\obj\Debug\db4o.csprojResolveAssemblyReference.cache
+c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\obj\Debug\db4o.exe
+c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\obj\Debug\db4o.pdb
