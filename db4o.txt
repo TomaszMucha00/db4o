@@ -1,0 +1,35 @@
+W bazie danych chcemy przekonywaæ kontakty.
+
+Klasa osoba 
+musi mieæ:
+imie string
+nazwisko adres
+adres : Adres (typ obiektowy)
+tel : Lista<Telefon> (typ obiektowy)
+
+Maj¹ byæ nie w³aœciwoœci tylko pola.
+
+Klasa Adres
+musi mieæ:
+
+ulica: string
+kodPocztowy: string
+miasto: string
+
+osoba <<use>> Adres
+
+Telefon
+numer: string
+operator: string
+rodzaj: string (mobliny, stacjonarny, biurowy)
+
+osoba <<use>> telefon
+
+UWAGA: nazwisko traktujemy dla u³atwienia jako wartoœæ unikaln¹
+
+1. Funkcjonalnoœci Wstaw/modyfikuj/usuñ dla osoba
+2. Jeœli usuwamy dan¹ osobê to znikaj¹ wszystkie jej dane w³¹cznie z telefonem i adresem (kaskadowoœæ).
+3. Wstaw/modyfikuj/usuñ adres (wskazanej osoby np. Kowalskiego)
+4. Wstaw/modyfikuj/usuñ telefon (wskazanego telefonu np. Kowalskiego) (usuniêcie samego numeru generuje Nulla na liœcie)
+5. Pokazanie danych osoby (dwie wersje: Jak nazwisko do wszystkie dane - osoba, adres, tel; gdy brak nazwiska wszystko)
+6. Statystyki - liczba obiektów klasy osoba, adres, tel. (
