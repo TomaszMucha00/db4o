@@ -6,3 +6,6 @@ c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\bin\Debug\Db
 c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\obj\Debug\db4o.csprojResolveAssemblyReference.cache
 c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\obj\Debug\db4o.exe
 c:\users\varimatras\documents\visual studio 2015\Projects\db4o\db4o\obj\Debug\db4o.pdb
+C:\Users\Varimatras\Documents\GitHub\db4o\db4o\bin\Debug\db4o.exe.config
+C:\Users\Varimatras\Documents\GitHub\db4o\db4o\obj\Debug\db4o.exe
+C:\Users\Varimatras\Documents\GitHub\db4o\db4o\obj\Debug\db4o.pdb

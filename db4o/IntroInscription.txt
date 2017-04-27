@@ -17,3 +17,5 @@ Select one of the option:
 11) Show statistics 
 
 Select "0" to exit program.
+
+Select "12" to see menu again.

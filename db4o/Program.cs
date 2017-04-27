@@ -54,8 +54,26 @@ namespace db4o
                     case 5:
                         Operation.UpdateAddress();
                         break;
+                    case 6:
+                        Operation.DeleteAddress();
+                        break;
+                    case 7:
+                        Operation.AddPhones();
+                        break;
+                    case 8:
+                        Operation.UpdatePhone();
+                        break;
+                    case 9:
+                        Operation.DeletePhone();
+                        break;
                     case 10:
                         Operation.ShowPerson();
+                        break;
+                    case 11:
+                        Operation.Statistic();
+                        break;
+                    case 12:
+                        Console.WriteLine(System.IO.File.ReadAllText(@"C:\Users\Varimatras\Documents\Visual Studio 2015\Projects\db4o\db4o\IntroInscription.txt"));
                         break;
                     case 0:
                         break;

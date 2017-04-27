@@ -194,6 +194,70 @@ namespace db4o
             }
         }
 
+        public static void UpdatePhone()
+        {
+
+            IEmbeddedConfiguration config = Db4oEmbedded.NewConfiguration();
+            config.Common.ObjectClass(typeof(Person)).CascadeOnUpdate(true);
+            using (IObjectContainer db = Db4oEmbedded.OpenFile(config, @"C:\DBO\ODB.yap"))
+            {
+                string userSurename;
+
+                Console.WriteLine("\nInsert person surename who phone You want modificate: \n");
+
+                userSurename = Console.ReadLine();
+
+                string TempPhoneNumber;
+
+                Console.WriteLine("\nSelect phone witch You want modificate by number: \n");
+
+                Console.WriteLine("Number: \n");
+                TempPhoneNumber = Console.ReadLine();
+                
+                string forStoreNumber = "";
+                
+
+                IObjectSet result = db.QueryByExample(new Person(null, userSurename, new Address(null, null, null), new Phone(null, null, null)));
+                Person found;
+
+                if (result.HasNext())
+                {
+                    found = (Person)result.Next();
+
+                    foreach (Phone phones in found.PersonPhones.Where(x => x.Number == TempPhoneNumber))
+                    {
+                        Console.Write("Person phone - Number: ");
+                        phones.Number = Console.ReadLine().ToString();
+                        forStoreNumber = phones.Number;
+
+                        Console.Write("Person phone - Operator: ");
+                        phones.Operator = Console.ReadLine().ToString();
+
+                        Console.Write("Person phone - Phone type: ");
+                        phones.PhoneType = Console.ReadLine().ToString();
+                    }
+
+                    foreach (var item in found.PersonPhones)
+                    {
+                        Console.WriteLine(item.Number);
+                    }
+
+
+
+                    db.Activate(found, 100);
+
+
+
+                    db.Store(found.PersonPhones.Find(x => x.Number == forStoreNumber));
+                }
+                else
+                {
+                    Console.WriteLine("\nThis peron don't exist in database");
+                }
+
+            }
+        }
+
         #region OperationOnPersonAddressPrototype
         //public static void OperationOnPersonAddress()
         //{
@@ -414,9 +478,126 @@ namespace db4o
                     Console.WriteLine("This person don't exist in database");
                 }
             }
+
+
         }
 
-            
+        public static void DeleteAddress()
+        {
+
+            using (IObjectContainer db = Db4oEmbedded.OpenFile(@"C:\DBO\ODB.yap"))
+            {
+
+
+                string userName;
+                string DeleteStreet;
+                string DeleteCity;
+
+                Console.WriteLine("Insert person surname who address You want delete: ");
+
+                userName = Console.ReadLine();
+
+                Console.WriteLine("Insert address witch You want delete, by city and street: ");
+
+                Console.WriteLine("Street: ");
+
+                DeleteStreet = Console.ReadLine();
+
+                Console.WriteLine("City: ");
+
+                DeleteCity = Console.ReadLine();
+
+                IObjectSet result = db.QueryByExample(new Person(null, userName, new Address(null, null, null), new ObjectDataBase.Phone(null, null, null)));
+                Person found;
+                if (result.HasNext())
+                {
+                    found = (Person)result.Next();
+                    db.Delete(found.PersonAddresses.Find(x => (x.City == DeleteCity) && (x.Street == DeleteStreet)));
+                    //RetrieveAllPerson(db);
+
+                    Console.WriteLine("\nPerson address has been deleted from database");
+
+                }
+                else
+                {
+                    Console.WriteLine("This person don't exist in database");
+                }
+            }
+
+
+        }
+
+        public static void DeletePhone()
+        {
+
+            using (IObjectContainer db = Db4oEmbedded.OpenFile(@"C:\DBO\ODB.yap"))
+            {
+
+
+                string userName;
+                string DeleteNumber;
+
+                Console.WriteLine("Insert person surename who phone You want delete: ");
+
+                userName = Console.ReadLine();
+
+                Console.WriteLine("Insert phone witch You want delete, by number: ");
+
+                Console.WriteLine("Number: ");
+
+                DeleteNumber = Console.ReadLine();
+                
+                IObjectSet result = db.QueryByExample(new Person(null, userName, new Address(null, null, null), new ObjectDataBase.Phone(null, null, null)));
+                Person found;
+                if (result.HasNext())
+                {
+                    found = (Person)result.Next();
+                    db.Delete(found.PersonAddresses.Find(x => x.City == DeleteNumber));
+                    //RetrieveAllPerson(db);
+
+                    Console.WriteLine("\nPerson phone has been deleted from database");
+
+                }
+                else
+                {
+                    Console.WriteLine("This person don't exist in database");
+                }
+            }
+
+
+        }
+
+        public static void Statistic()
+        {
+
+            using (IObjectContainer db = Db4oEmbedded.OpenFile(@"C:\DBO\ODB.yap"))
+            {
+
+                IObjectSet result = db.QueryByExample(new Person(null, null, new Address(null, null, null), new ObjectDataBase.Phone(null, null, null)));
+
+                Person found;
+
+                Console.WriteLine("There is " + result.Ext().Count + " persone in database\n");
+
+                int AddressesCounter = 0;
+                int PhonesCounter = 0;
+
+                while (result.HasNext())
+                {
+                    found = (Person)result.Next();
+                    AddressesCounter += found.PersonAddresses.Count;
+                    PhonesCounter += found.PersonPhones.Count;
+                }
+
+                Console.WriteLine("There is " + AddressesCounter + " address in database\n");
+
+                Console.WriteLine("There is " + PhonesCounter + " phone in database\n");
+            }
+
+
+        }
+
+
     }
 }
 

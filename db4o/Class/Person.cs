@@ -31,6 +31,8 @@ namespace ObjectDataBase
                 temp = temp + "\n" + item.Street + " " + item.PostalCode + " " + item.City;
             }
 
+            temp = temp + "\n\n**********************************************************\n*********************Person Phones**********************\n**********************************************************";
+
             foreach (var item in PersonPhones)
             {
                 temp = temp + "\n" + item.Number + " " + item.Operator + " " + item.PhoneType;
