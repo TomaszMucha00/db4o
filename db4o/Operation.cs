@@ -61,7 +61,7 @@ namespace db4o
             using (IObjectContainer db = Db4oEmbedded.OpenFile(@"C:\DBO\ODB.yap"))
             {
 
-                Console.WriteLine("\nInsert person surename who address you want modificate: \n");
+                Console.WriteLine("\nInsert person surename who address you want add: \n");
 
                 string userSurename = Console.ReadLine();
 
@@ -87,6 +87,10 @@ namespace db4o
 
                     db.Store(found.PersonAddresses);
                     //found.PersonAddresses.Sort();
+                }
+                else
+                {
+                    Console.WriteLine("\nThis peron don't exist in database");
                 }
             }
         }
@@ -454,7 +458,7 @@ namespace db4o
 
             using (IObjectContainer db = Db4oEmbedded.OpenFile(@"C:\DBO\ODB.yap"))
             {
-
+                db.Ext().Configure().ObjectClass(typeof(Person)).CascadeOnDelete(true);
 
                 string userName;
 
@@ -588,6 +592,9 @@ namespace db4o
                     AddressesCounter += found.PersonAddresses.Count;
                     PhonesCounter += found.PersonPhones.Count;
                 }
+
+                AddressesCounter -= result.Ext().Count;
+                PhonesCounter -= result.Ext().Count;
 
                 Console.WriteLine("There is " + AddressesCounter + " address in database\n");
 
