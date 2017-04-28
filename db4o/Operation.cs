@@ -100,7 +100,7 @@ namespace db4o
             using (IObjectContainer db = Db4oEmbedded.OpenFile(@"C:\DBO\ODB.yap"))
             {
 
-                Console.WriteLine("\nInsert person surename who address you want modificate: \n");
+                Console.WriteLine("\nInsert person surename who phone you want modificate: \n");
 
                 string userSurename = Console.ReadLine();
 
